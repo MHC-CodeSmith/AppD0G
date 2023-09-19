@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, ImageBackground, TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
-import Joy from './joy';
+import { Link } from 'expo-router';
 
-const App = () => {
+export default function Page() {
   const [selectedAction, setSelectedAction] = useState(-1);
 
   const handleIconPress = (action) => {
@@ -33,34 +33,38 @@ const App = () => {
   };
 
   return (
-    <View style={styles.container}>
+        <View style={styles.container}>
 
         {/* Ícones e Botões */}
-        <View style={[styles.iconContainer, {marginTop: 20}]}>
-          <TouchableOpacity onPress={() => handleIconPress('comandos')}>
-            <View style={styles.iconWrapper}>
-              <View style={styles.command}>
+        <View style={styles.iconContainer}>
+          
+            <TouchableOpacity onPress={() => handleIconPress('comandos')}>
+              <Link href={'/loading'}>
+              <View style={styles.iconWrapper}>
+                <View style={styles.command}>
+                  <Image
+                    source={require('../assets/moldura.jpg')} // Caminho relativo corrigido
+                    style={styles.frame}
+                  />
+                  <Text>Comandos</Text>
+                </View>
                 <Image
-                  source={require('../../assets/moldura.jpg')} // Caminho relativo corrigido
-                  style={styles.frame}
+                  source={require('../assets/comandos.png')} // Caminho relativo corrigido
+                  style={styles.icon}
                 />
-                <Text>Andar</Text>
               </View>
-              <Image
-                source={require('../../assets/comandos.png')} // Caminho relativo corrigido
-                style={styles.icon}
-              />
-            </View>
-          </TouchableOpacity>
+              </Link>
+            </TouchableOpacity>
+          
 
           <TouchableOpacity onPress={() => handleIconPress('sentar')}>
             <View style={styles.iconWrapper}>
               <Image
-                source={require('../../assets/moldura.jpg')} // Caminho relativo corrigido
+                source={require('../assets/moldura.jpg')} // Caminho relativo corrigido
                 style={styles.frame}
               />
               <Image
-                source={require('../../assets/sentar.png')} // Caminho relativo corrigido
+                source={require('../assets/sentar.png')} // Caminho relativo corrigido
                 style={styles.icon}
               />
             </View>
@@ -69,11 +73,11 @@ const App = () => {
           <TouchableOpacity onPress={() => handleIconPress('dancar')}>
             <View style={styles.iconWrapper}>
               <Image
-                source={require('../../assets/moldura.jpg')} // Caminho relativo corrigido
+                source={require('../assets/moldura.jpg')} // Caminho relativo corrigido
                 style={styles.frame}
               />
               <Image
-                source={require('../../assets/dancar.jpg')} // Caminho relativo corrigido
+                source={require('../assets/dancar.jpg')} // Caminho relativo corrigido
                 style={styles.icon}
               />
             </View>
@@ -82,29 +86,28 @@ const App = () => {
           <TouchableOpacity onPress={() => handleIconPress('deitar')}>
             <View style={styles.iconWrapper}>
               <Image
-                source={require('../../assets/moldura.jpg')} // Caminho relativo corrigido
+                source={require('../assets/moldura.jpg')} // Caminho relativo corrigido
                 style={styles.frame}
               />
               <Image
-                source={require('../../assets/deitar.png')} // Caminho relativo corrigido
+                source={require('../assets/deitar.png')} // Caminho relativo corrigido
                 style={styles.icon}
               />
             </View>
           </TouchableOpacity>
         {/* Componente Joy renderizado condicionalmente */}
-      {selectedAction === 0 && <Joy />}
-    
+
 
         </View>
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => handleIconPress('atacar')}>
             <View style={styles.iconWrapper}>
               <Image
-                source={require('../../assets/moldura.jpg')} // Caminho relativo corrigido
+                source={require('../assets/moldura.jpg')} // Caminho relativo corrigido
                 style={styles.frame}
               />
               <Image
-                source={require('../../assets/atacar.png')} // Caminho relativo corrigido
+                source={require('../assets/atacar.png')} // Caminho relativo corrigido
                 style={styles.icon}
               />
             </View>
@@ -113,11 +116,11 @@ const App = () => {
           <TouchableOpacity onPress={() => handleIconPress('latir')}>
             <View style={styles.iconWrapper}>
               <Image
-                source={require('../../assets/moldura.jpg')} // Caminho relativo corrigido
+                source={require('../assets/moldura.jpg')} // Caminho relativo corrigido
                 style={styles.frame}
               />
               <Image
-                source={require('../../assets/latir.png')} // Caminho relativo corrigido
+                source={require('../assets/latir.png')} // Caminho relativo corrigido
                 style={styles.icon}
               />
             </View>
@@ -157,5 +160,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 });
-
-export default App;
